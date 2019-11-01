@@ -22,7 +22,7 @@ class RegisterActivity : AppCompatActivity() {
 
             if (reg_password.text.toString().equals(reg_confirm.text.toString()))
             {
-                var url = "http://192.168.0.107/SalesWeb/add_user.php?mobile="+reg_mobile.text.toString()+"&password="+
+                var url = "http://192.168.0.109/SalesWeb/add_user.php?mobile="+reg_mobile.text.toString()+"&password="+
                         reg_password.text.toString()+"&name="+reg_name.text.toString()+"&address="+reg_address.text.toString()
 
                 var rq:RequestQueue=Volley.newRequestQueue(this)
