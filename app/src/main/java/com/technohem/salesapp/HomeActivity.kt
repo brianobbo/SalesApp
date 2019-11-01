@@ -28,7 +28,7 @@ class HomeActivity : AppCompatActivity() {
 
             // arrayAdapter is use to fill list view
             // ArrayAdapter(1,2,3)
-            var adp = ArrayAdapter(this,android.R.layout.simple_list_item_1,list)
+            var adp = ArrayAdapter(this,R.layout.my_textview,list)
             home_cat.adapter = adp
 
         },Response.ErrorListener { error ->
