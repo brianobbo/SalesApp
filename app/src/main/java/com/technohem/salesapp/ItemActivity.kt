@@ -26,7 +26,7 @@ class ItemActivity : AppCompatActivity() {
 
             for(x in 0..response.length()-1)
                 list.add(Item(response.getJSONObject(x).getInt("id"),response.getJSONObject(x).getString("name"),
-                    response.getJSONObject(x).getString("price"),response.getJSONObject(x).getString("photo")))
+                    response.getJSONObject(x).getDouble("price"),response.getJSONObject(x).getString("photo")))
 
             var adp=ItemAdapter(this,list)
             item_rv.layoutManager= LinearLayoutManager(this)

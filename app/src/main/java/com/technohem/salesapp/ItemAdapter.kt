@@ -26,10 +26,10 @@ class ItemAdapter(var context: Context, var list:ArrayList<Item>) : RecyclerView
 
     class ItemHolder(itemView:View):RecyclerView.ViewHolder(itemView)
     {
-        fun bind(n:String,p:String,u:String,item_id:Int)
+        fun bind(n:String,p:Double,u:String,item_id:Int)
         {
             itemView.item_name.text=n
-            itemView.item_price.text= p
+            itemView.item_price.text= p.toString()
             var web:String="http://192.168.0.109/SalesWeb/images/"+u
             web=web.replace(" ","%20")
             Picasso.with(itemView.context).load(web).into(itemView.item_photo)

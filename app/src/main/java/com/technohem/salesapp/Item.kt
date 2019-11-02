@@ -4,10 +4,10 @@ class Item {
 
     var id:Int
     var name:String
-    var price:String
+    var price:Double
     var photo:String
 
-    constructor(id:Int,name:String,price:String,photo:String)
+    constructor(id:Int,name:String,price:Double,photo:String)
     {
         this.id=id
         this.name=name
