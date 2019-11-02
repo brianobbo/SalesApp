@@ -1,5 +1,6 @@
 package com.technohem.salesapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -36,5 +37,14 @@ class HomeActivity : AppCompatActivity() {
         })
 
         rq.add(jar)
+
+        // set on item click
+        home_cat.setOnItemClickListener { adapterView, view, i, l ->
+
+            var cat:String = list[i]
+            var obj=Intent(this,ItemActivity::class.java)
+            obj.putExtra("cat",cat)
+            startActivity(obj)
+        }
     }
 }
