@@ -75,6 +75,23 @@ class OrderActivity : AppCompatActivity() {
             rq.add(sr)
         }
 
+        if(item?.itemId==R.id.item_confirm)
+        {
+            var url="http://192.168.0.109/SalesWeb/confirm_order.php?mobile=" + UserInfo.mobile
+            var rq:RequestQueue=Volley.newRequestQueue(this)
+            var sr= StringRequest(Request.Method.GET,url,Response.Listener { response ->
+
+                var i=Intent(this,TotalActivity::class.java)
+                i.putExtra("bno",response)
+                startActivity(i)
+
+            },Response.ErrorListener { error ->
+                Toast.makeText(this,error.message,Toast.LENGTH_LONG).show()
+            })
+
+            rq.add(sr)
+        }
+
         return super.onOptionsItemSelected(item)
     }
 }
