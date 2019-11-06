@@ -18,6 +18,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        Toast.makeText(this,intent.getStringExtra("get_name"),Toast.LENGTH_LONG).show()
+
         var url = "http://192.168.0.109/SalesWeb/get_cat.php"
         var list = ArrayList<String>()
         var rq:RequestQueue = Volley.newRequestQueue(this)

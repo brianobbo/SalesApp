@@ -2,6 +2,7 @@ package com.technohem.salesapp
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,15 @@ class ItemAdapter(var context: Context, var list:ArrayList<Item>) : RecyclerView
                 var manager=(itemView.context as Activity).fragmentManager
                 obj.show(manager,"Qty")
 
+            }
+
+            itemView.setOnClickListener {
+
+                UserInfo.sendName=n
+
+                val intent = Intent(itemView.context,HomeActivity::class.java)
+                intent.putExtra("get_name",UserInfo.sendName)
+                itemView.context.startActivity(intent)
             }
         }
     }
