@@ -4,12 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,11 +26,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         login_btn.setOnClickListener {
-            var url = "http://192.168.0.109/SalesWeb/login.php?mobile=" + login_mobile.text.toString() + "&password=" +
-                    login_password.text.toString()
+            var url = "http://192.168.0.109/SalesWeb/login.php"
 
             var rq: RequestQueue = Volley.newRequestQueue(this)
-            var sr= StringRequest(Request.Method.GET,url, Response.Listener { response ->
+            var sr= object : StringRequest(Request.Method.POST,url, Response.Listener { response ->
                 if(response.equals("0"))
                     Toast.makeText(this,"Login Fail", Toast.LENGTH_LONG).show()
                 else
@@ -39,7 +41,21 @@ class MainActivity : AppCompatActivity() {
 
             }, Response.ErrorListener { error ->
                 Toast.makeText(this,error.message, Toast.LENGTH_LONG).show()
-            })
+            }) {
+                @Throws(AuthFailureError::class)
+                override fun getParams(): Map<String, String> {
+
+                    //Creating parameters
+                    val params = Hashtable<String, String>()
+
+                    //Adding parameters
+                    params["mobile"] = login_mobile.text.toString()
+                    params["password"] = login_password.text.toString()
+
+                    //returning parameters
+                    return params
+                }
+            }
 
             rq.add(sr)
         }
